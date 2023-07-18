@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="quiz.css">
+<style>
+  h1{
+    color: white;
+  }
+  #score{
+    color: white;
+  }
+  body{
+    background: url(https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg?w=2000);
+  }
+  div{
+    margin: 10px;
+  }
+  button{
+    margin: 40px;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgb(34, 241, 34);
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+  button:hover{
+background-color: rgb(16, 163, 16);
+  }
+  #score{
+    font-size: 40px;
+  }
+ 
+
+</style>
+
+<body>
+    <center>
+        <h1 id="boss"></h1>
+<div id="worker"></div>
+
+<div id="score"></div>
+</center>
+<button onclick="makeup()" id="begin">Let's begin quiz </button>
+
+    <script>const quizData = [
+        {
+          question: "What is the capital of France?",
+          choices: ["Paris", "Berlin", "Rome", "Madrid"],
+          correctAnswer: "Paris"
+        },
+        {
+          question: "Which planet is known as the Red Planet?",
+          choices: ["Mars", "Venus", "Jupiter", "Saturn"],
+          correctAnswer: "Mars"
+        },
+        
+        
+        {
+          question: "What is the largest mammal on Earth?",
+          choices: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+          correctAnswer: "Blue Whale"
+        },
+        {
+          question: "Who wrote the play 'Romeo and Juliet'?",
+          choices: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+          correctAnswer: "William Shakespeare"
+        },
+        {
+          question: "What is the chemical symbol for water?",
+          choices: ["O2", "H2O", "CO2", "NaCl"],
+          correctAnswer: "H2O"
+        },
+        {
+    question: "What is the value of 3^4?",
+    choices: ["9", "27", "81", "64"],
+    correctAnswer: "81"
+  },
+  {
+    question: "Solve for x: 2x + 5 = 15",
+    choices: ["4", "5", "6", "7"],
+    correctAnswer: "5"
+  },
+  {
+    question: "What is the result of 4! (factorial)?",
+    choices: ["12", "16", "24", "8"],
+    correctAnswer: "24"
+  },
+  {
+    question: "What is the circumference of a circle with a diameter of 12 units? (Use π = 3.14)",
+    choices: ["12.56", "25.12", "37.68", "50.24"],
+    correctAnswer: "37.68"
+  },
+  {
+    question: "Simplify the expression: (3 + 4) * 5 - 6",
+    choices: ["21", "23", "25", "27"],
+    correctAnswer: "25"
+  },
+  {
+    question: "If f(x) = 2x^2 + 3x + 1, find f(3).",
+    choices: ["28", "22", "19", "16"],
+    correctAnswer: "28"
+  },{
+    question: "Identify the noun in the following sentence: 'The cat chased the mouse.'",
+    choices: ["chased", "cat", "mouse", "the"],
+    correctAnswer: "cat"
+  },
+  {
+    question: "Choose the correct form of the verb: 'She _____ to the store yesterday.'",
+    choices: ["go", "goes", "is going", "went"],
+    correctAnswer: "went"
+  },
+  {
+    question: "Which sentence is written in the passive voice?",
+    choices: [
+      "The chef prepared a delicious meal.",
+      "The dog chased the ball.",
+      "The book was written by the famous author.",
+      "I will visit the museum."
+    ],
+    correctAnswer: "The book was written by the famous author."
+  },
+  {
+    question: "Select the correct use of 'their', 'there', or 'they're': '_____ going to the party tonight.'",
+    choices: ["Their", "There", "They're", "There're"],
+    correctAnswer: "They're"
+  },
+  {
+    question: "Identify the adjective in this sentence: 'The tall building stood proudly.'",
+    choices: ["building", "stood", "tall", "proudly"],
+    correctAnswer: "tall"
+  },
+  {
+    question: "Which word is a preposition in this sentence: 'The cat jumped over the fence.'",
+    choices: ["cat", "jumped", "over", "fence"],
+    correctAnswer: "over"
+  },
+  {
+    question: "What is the Nepali word for 'hello'?",
+    choices: ["नमस्कार", "धन्यवाद", "केहि छ", "नमस्ते"],
+    correctAnswer: "नमस्ते"
+  },
+  {
+    question: "Translate 'thank you' in Nepali.",
+    choices: ["माफ गर्नुहोस्", "सुप्रभात", "धन्यवाद", "कुनै पनि छैन"],
+    correctAnswer: "धन्यवाद"
+  },
+  {
+    question: "What is 'one' in Nepali?",
+    choices: ["एक", "दुई", "तीन", "चार"],
+    correctAnswer: "एक"
+  },
+  {
+    question: "How do you say 'goodbye' in Nepali?",
+    choices: ["नमस्कार", "फेरि भेटौं", "सुप्रभात", "छिट्टै भेटौं"],
+    correctAnswer: "छिट्टै भेटौं"
+  },
+  {
+    question: "Translate 'water' in Nepali.",
+    choices: ["पानी", "बारी", "खाना", "बाल"],
+    correctAnswer: "पानी"
+  },
+  {
+    question: "What does 'मेरो नाम' mean in English?",
+    choices: ["My name is", "Where are you?", "What time is it?", "How are you?"],
+    correctAnswer: "My name is"
+  },
+  {
+    question: "What is the Nepali word for 'book'?",
+    choices: ["किताब", "पेन्सिल", "माथि", "टेबल"],
+    correctAnswer: "किताब"
+  },
+  {
+    question: "Choose the correct form of the verb: 'मेरो साथीहरू सर्दैछन्।'",
+    choices: ["सर्दा", "सर्दै", "सर्दैछन्", "सर्दैछ"],
+    correctAnswer: "सर्दैछन्"
+  },
+  {
+    question: "Which sentence is written in the active voice?",
+    choices: [
+      "बच्चाहरूले गिटार खेल्यो।",
+      "फलहरूलाई खान्छौ।",
+      "सरकारले यो योजना लागू गर्छ।",
+      "गाउँमा बिरामीहरू छन्।"
+    ],
+    correctAnswer: "बच्चाहरूले गिटार खेल्यो।"
+  },
+  {
+    question: "Select the correct use of 'तपाईं', 'तिमी', or 'हजुर': '_____ नाम के हो?'",
+    choices: ["तपाईंको", "तिमीको", "हजुरको", "तपाईं"],
+    correctAnswer: "तपाईंको"
+  },
+  {
+    question: "Identify the adjective in this sentence: 'सुन्दर फूलहरू खिल्यो।'",
+    choices: ["सुन्दर", "फूलहरू", "खिल्यो", "फूलहरू खिल्यो"],
+    correctAnswer: "सुन्दर"
+  },
+  {
+    question: "What is 'five' in Nepali?",
+    choices: ["चार", "पाँच", "छ", "एक"],
+    correctAnswer: "पाँच"
+  },
+  {
+    question: "What will be the output of the following C code?",
+    code: `
+#include <stdio.h>
+int main() {
+    int x = 10;
+    int y = x / 3;
+    printf("%d", y);
+    return 0;
+}
+    `,
+    choices: ["3", "3.33", "3.0", "4"],
+    correctAnswer: "3"
+  },
+  {
+    question: "What does the 'sizeof()' operator in C return?",
+    choices: ["The size of the variable", "The size of the datatype", "The address of the variable", "The value of the variable"],
+    correctAnswer: "The size of the datatype"
+  },
+  {
+    question: "What will be the output of the following C code?",
+    code: `
+#include <stdio.h>
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int *ptr = arr;
+    printf("%d", *ptr);
+    return 0;
+}
+    `,
+    choices: ["1", "2", "3", "The address of arr[0]"],
+    correctAnswer: "1"
+  },
+  {
+    question: "What is the correct way to declare a constant in C?",
+    choices: ["const int constant = 10;", "int constant = 10;", "constant int = 10;", "int = const 10;"],
+    correctAnswer: "const int constant = 10;"
+  },
+  {
+    question: "What is the purpose of 'malloc()' function in C?",
+    choices: ["To free allocated memory", "To allocate memory dynamically", "To return the size of allocated memory", "To create a pointer variable"],
+    correctAnswer: "To allocate memory dynamically"
+  },
+  {
+    question: "Which header file is required to use 'strlen()' function in C?",
+    choices: ["<string.h>", "<stdio.h>", "<stdlib.h>", "<math.h>"],
+    correctAnswer: "<string.h>"
+  }
+      
+      
+        // Add more quiz questions here
+      ];
+      let x=0; let score=0;
+      let questions= document.getElementById("boss");
+      let answers= document.getElementById("worker");
+      let marks=document.getElementById("score");
+      let marker=document.getElementById("begin");
+
+    marker.addEventListener('click',()=>{
+      marker.remove();
+    })
+      function makeup(){
+        if(quizData.length>x){
+          
+        questions.innerHTML='';
+      answers.innerHTML='';questions.textContent=quizData[x].question;
+    quizData[x].choices.forEach((options) => {
+    
+    let newbutton= document.createElement('button');
+    newbutton.className='buttons';
+    newbutton.textContent=options;
+     answers.appendChild(newbutton);
+     newbutton.addEventListener('click',clicked);
+     
+     
+    
+      });
+        }
+        else{
+          finalscore();
+        }
+    
+    
+      }
+      function clicked(choice){
+        const userAnswer = choice.target.textContent;
+    if( userAnswer=== quizData[x].correctAnswer){
+      score++;
+      x++;
+      
+       return makeup();
+      
+    }
+    if(userAnswer !== quizData[x].correctAnswer){
+      x++;
+      return makeup();
+    }
+      }
+      
+    function finalscore(){
+      questions.innerHTML='';
+      answers.innerHTML='';
+    let mymarks=marks.textContent=` Congratulations!your score is  ${score} out of ${quizData.length} .`;  
+    return mymarks;
+    }
+    </script>
+</body>
+</html>
